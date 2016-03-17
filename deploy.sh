@@ -136,23 +136,26 @@ eval $AZUREDEPLOY_CMD -v
 # Build
 # -----
 
-echo Cleaning Cache
+echo "Cleaning Cache"
 eval $NPM_CMD cache clean
 exitWithMessageOnError "npm cache cleaning failed"
 
-echo Installing npm modules
+echo "Installing npm modules"
 eval $NPM_CMD install --no-optional --no-bin-links
 exitWithMessageOnError "npm install failed"
 
-echo Installing bower dependencies
+echo "Installing bower dependencies"
 eval $BOWER_CMD install
 exitWithMessageOnError "bower install failed"
 
-echo Build the dist folder
+echo "Build the dist folder"
 eval $AZUREDEPLOY_CMD build
 exitWithMessageOnError "ember-cli-azure-deploy build failed"
 
-echo Copy web.config to the dist folder
+echo "Rebuild node-sass" 
+eval $NPM_CMD rebuild node-sass
+
+echo "Copy web.config to the dist folder"
 cp web.config dist\
 
 ##################################################################################################################################
