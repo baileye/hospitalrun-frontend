@@ -53,6 +53,8 @@ NODE_EXE="$PROGRAMFILES\\nodejs\\5.8.0\\node.exe"
 NPM_CMD="\"$NODE_EXE\" \"$PROGRAMFILES\\npm\\3.7.3\\node_modules\\npm\\bin\\npm-cli.js\""
 echo "Update NPM"
 eval $NPM_CMD install npm
+NODE_EXE=node
+NPM_CMD=npm
 NODE_MODULES_DIR="$APPDATA\\npm\\node_modules"
 
 EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
